@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import '../app.css';
 
     let activeSubheading: number = 0;
     let content: string = "";
@@ -47,6 +48,13 @@
 </script>
 
 <style>
+    /**
+    black: 212A31
+    grey: 2E3944
+    blue1: 124E66
+    blue2: 748D92
+    background: D3D9D4
+    */
     .container {
         margin: 0;
         padding: 0;
