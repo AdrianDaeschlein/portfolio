@@ -4,6 +4,10 @@
     let activeSubheading: number = 0;
     let content: string = "";
     let mounted = false;
+    let animationTriggered = false;
+
+    let centerTransform = '-100%';
+    let rightTransform = '-200%';
 
     // Subheading specific content
     const subheadingContent: { [key: number]: string } = {
@@ -14,14 +18,28 @@
 
     // Change content based on clicked subheading
     function changeContent(subheading: number) {
-        activeSubheading = subheading;
-        content = subheadingContent[subheading];
+        if (activeSubheading !== subheading) {
+            animationTriggered = false;
+            centerTransform = '-100%';
+            rightTransform = '-200%';
+            
+            setTimeout(() => {
+                activeSubheading = subheading;
+                content = subheadingContent[subheading];
+                animationTriggered = true;
+                centerTransform = '0';
+                rightTransform = '0';
+            }, 50);
+        }
     }
 
     onMount(() => {
         setTimeout(() => {
             activeSubheading = 1;
             mounted = true;
+            animationTriggered = true;
+            centerTransform = '0';
+            rightTransform = '0';
         }, 100);
     });
 
@@ -29,9 +47,10 @@
 </script>
 
 <style>
-    body {
+    .container {
         margin: 0;
         padding: 0;
+        background-color: #D3D9D4;
     }
 
     .container {
@@ -55,7 +74,14 @@
 
     .center,
     .right {
-        /* position: relative; */
+        position: absolute;
+        transition: transform 0s;
+        height: 100%;
+    }
+
+    .center.animate,
+    .right.animate {
+        transition: transform 0.5s ease-in-out;
     }
 
     .center {
@@ -68,7 +94,7 @@
         color: white;
         font-size: 24px;
         transform: translateX(-100%);
-        transition: transform 1s ease-in-out;
+        left: 20%;
     }
 
     .right {
@@ -81,7 +107,7 @@
         justify-content: center;
         color: white;
         font-size: 24px;
-        transition: transform 2s ease-in-out;
+        left: 60%;
     }
 
     .center.active,
@@ -106,20 +132,32 @@
     <div class="left">
         <h1>HEADING 1</h1>
         <div>
-            <div class="subheadings" on:click={() => changeContent(1)}>SUBHEADING 1</div>
-            <div class="subheadings" on:click={() => changeContent(2)}>SUBHEADING 2</div>
-            <div class="subheadings" on:click={() => changeContent(3)}>SUBHEADING 3</div>
+            <div class="subheadings" role="button" tabindex="0" 
+                 on:click={() => changeContent(1)} 
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(1)}>SUBHEADING 1</div>
+            <div class="subheadings" role="button" tabindex="0" 
+                 on:click={() => changeContent(2)} 
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(2)}>SUBHEADING 2</div>
+            <div class="subheadings" role="button" tabindex="0" 
+                 on:click={() => changeContent(3)} 
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(3)}>SUBHEADING 3</div>
         </div>
     </div>
 
     <!-- Center column -->
-    <div class="center" class:active={mounted && activeSubheading !== 0}>
+    <div class="center" 
+         class:active={mounted && activeSubheading !== 0} 
+         class:animate={animationTriggered}
+         style="transform: translateX({centerTransform})">
         <h1>HEADING 2</h1>
         <p>{content}</p>
     </div>
 
     <!-- Right column -->
-    <div class="right" class:active={mounted && activeSubheading !== 0}>
+    <div class="right" 
+         class:active={mounted && activeSubheading !== 0} 
+         class:animate={animationTriggered}
+         style="transform: translateX({rightTransform})">
         <h1>HEADING 3</h1>
     </div>
 </div>
