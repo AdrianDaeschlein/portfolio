@@ -2,8 +2,12 @@
     import { onMount } from 'svelte';
     import '../app.css';
 
+    import SkincancerDetection from '../components/SkincancerDetection.svelte';
+    import TableauVisualization from '../components/TableauVisualization.svelte';
+    import ReinforcementLearning from '../components/ReinforcementLearning.svelte';
+    import PredictiveAnalytics from '../components/PredictiveAnalytics.svelte';
+
     let activeSubheading: number = 0;
-    let content: string = "";
     let mounted = false;
     let animationTriggered = false;
 
@@ -26,7 +30,6 @@
             
             setTimeout(() => {
                 activeSubheading = subheading;
-                content = subheadingContent[subheading];
                 animationTriggered = true;
                 centerTransform = '0';
                 rightTransform = '0';
@@ -43,8 +46,6 @@
             rightTransform = '0';
         }, 100);
     });
-
-    $: content = subheadingContent[activeSubheading] || "";
 </script>
 
 <style>
@@ -89,20 +90,27 @@
 
     .center.animate,
     .right.animate {
-        transition: transform 0.5s ease-in-out;
+        transition: transform 1s ease-in-out;
     }
 
     .center {
         z-index: 2;
         background-color: #748D92;
         width: 40%;
+        height: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
         color: white;
         font-size: 24px;
         transform: translateX(-100%);
         left: 20%;
+        padding: 40px;
+        overflow-y: auto;
+    }
+
+    .center-content {
+        flex-grow: 1;
+        overflow-y: auto;
     }
 
     .right {
@@ -138,17 +146,20 @@
 <div class="container">
     <!-- Left column -->
     <div class="left">
-        <h1>HEADING 1</h1>
+        <h1>PROJECTS</h1>
         <div>
             <div class="subheadings" role="button" tabindex="0" 
                  on:click={() => changeContent(1)} 
-                 on:keydown={(e) => e.key === 'Enter' && changeContent(1)}>SUBHEADING 1</div>
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(1)}>SKINCANCER DETECTION</div>
             <div class="subheadings" role="button" tabindex="0" 
                  on:click={() => changeContent(2)} 
-                 on:keydown={(e) => e.key === 'Enter' && changeContent(2)}>SUBHEADING 2</div>
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(2)}>TABLEAU VISUALIZATION OF AIRBNB DATA</div>
             <div class="subheadings" role="button" tabindex="0" 
                  on:click={() => changeContent(3)} 
-                 on:keydown={(e) => e.key === 'Enter' && changeContent(3)}>SUBHEADING 3</div>
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(3)}>REINFORCEMENT LEARNING MODEL FOR SAME-DAY DELIVERY</div>
+            <div class="subheadings" role="button" tabindex="0" 
+                 on:click={() => changeContent(4)} 
+                 on:keydown={(e) => e.key === 'Enter' && changeContent(4)}>PREDICTIVE ANALYTICS OF AIRLINE DELAYS</div>
         </div>
     </div>
 
@@ -157,8 +168,20 @@
          class:active={mounted && activeSubheading !== 0} 
          class:animate={animationTriggered}
          style="transform: translateX({centerTransform})">
-        <h1>HEADING 2</h1>
-        <p>{content}</p>
+        <div class="center-content">
+            {#if activeSubheading === 1}
+                <SkincancerDetection />
+            {/if}
+            {#if activeSubheading === 2}
+                <TableauVisualization />
+            {/if}
+            {#if activeSubheading === 3}
+                <ReinforcementLearning />
+            {/if}
+            {#if activeSubheading === 4}
+                <PredictiveAnalytics />
+            {/if}
+        </div>
     </div>
 
     <!-- Right column -->
