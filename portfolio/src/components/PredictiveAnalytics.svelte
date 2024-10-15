@@ -1,8 +1,11 @@
 <script lang="ts">
-    // You can add any specific logic or data here for Subheading 1
+  // You can add any specific logic or data here for Subheading 1
 </script>
 
 <div>
-    <h3>Skin Cancer Detection Project</h3>
-    <p>This is the content for the Skin Cancer Detection project.</p>
+  <h3>Airline Delay Prediction</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </p>
 </div>
