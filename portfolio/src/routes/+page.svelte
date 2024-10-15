@@ -8,6 +8,7 @@
   import PredictiveAnalytics from '../components/PredictiveAnalytics.svelte';
   // import ML_Final_Project from '../components/ML_Final_Project.svelte';
   import PredictiveAnalyticsCode from '../components/PredictiveAnalyticsCode.svelte';
+  import SkincancerDetectionCode from '../components/SkincancerDetectionCode.svelte';
   let activeSubheading: number = 0;
   let mounted = false;
   let animationTriggered = false;
@@ -127,7 +128,7 @@
     style="transform: translateX({rightTransform})"
   >
     {#if activeSubheading === 1}
-      <h1>SKIN CANCER DETECTION</h1>
+      <SkincancerDetectionCode />
     {/if}
     {#if activeSubheading === 2}
       <h1>TABLEAU VISUALIZATION OF AIRBNB DATA</h1>

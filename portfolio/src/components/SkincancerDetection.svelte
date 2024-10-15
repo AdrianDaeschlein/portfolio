@@ -2,7 +2,7 @@
   // You can add any specific logic or data here for Subheading 1
 </script>
 
-<div>
+<div class="container">
   <h1>Skin Cancer Detection</h1>
 
   <h2>Goal</h2>
@@ -57,3 +57,9 @@
     </li>
   </ul>
 </div>
+
+<style>
+  .container {
+    padding-bottom: 100px;
+  }
+</style>
