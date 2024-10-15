@@ -1189,11 +1189,52 @@ plt.show()
 </script>
 
 <div class="code-container">
-  <h3>Code</h3>
+  <div class="header">
+    <h3>Code</h3>
+    <a
+      href="https://github.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Open in GitHub"
+    >
+      <img src="/github-clipart.png" alt="GitHub" class="github-icon" />
+    </a>
+  </div>
   <div class="code-editor">
     <pre>{@html highlightedCode}</pre>
   </div>
 </div>
+
+<!-- <style>
+  .code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 40px;
+    margin-left: 80px;
+  }
+
+  .code-editor {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    overflow: auto;
+    height: 80%;
+    max-height: 800px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  pre {
+    margin: 0;
+  }
+</!-->
+-->
 
 <style>
   .code-container {
@@ -1204,6 +1245,20 @@ plt.show()
     height: 100%;
     margin: 40px;
     margin-left: 80px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .github-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
   }
 
   .code-editor {

@@ -52,11 +52,11 @@
 
 <div class="container">
   <!-- Left column -->
-  <div class="left">
-    <h1>
-      <b>PROJECTS</b>
-    </h1>
-    <h1>PROJECTS</h1>
+  <div
+    class="left"
+    style="display: flex; flex-direction: column; justify-content: flex-start;"
+  >
+    <h1 style="margin-block-start: 1em;">PROJECTS</h1>
     <div>
       <div
         class="subheadings"
@@ -83,7 +83,7 @@
         on:click={() => changeContent(3)}
         on:keydown={(e) => e.key === 'Enter' && changeContent(3)}
       >
-        REINFORCEMENT LEARNING MODEL FOR SAME-DAY DELIVERY
+        RL MODEL FOR SAME-DAY DELIVERY
       </div>
       <div
         class="subheadings"
@@ -94,6 +94,12 @@
       >
         PREDICTIVE ANALYTICS OF AIRLINE DELAYS
       </div>
+    </div>
+    <br />
+    <br />
+    <h1>ABOUT ME</h1>
+    <div>
+      <div class="subheadings">CV</div>
     </div>
   </div>
 
@@ -173,6 +179,7 @@
     flex-direction: column;
     justify-content: center;
     padding-left: 20px;
+    padding-top: 40px;
   }
 
   .center,

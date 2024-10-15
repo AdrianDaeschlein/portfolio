@@ -3,7 +3,7 @@
 </script>
 
 <div class="container">
-  <h1>Skin Cancer Detection</h1>
+  <h3>Skin Cancer Detection</h3>
 
   <h2>Goal</h2>
   <p>

@@ -3,9 +3,9 @@
 </script>
 
 <div class="container">
-  <h1>Skin Cancer Detection</h1>
+  <h3>Skin Cancer Detection</h3>
 
-  <h2>Goal</h2>
+  <h3>Goal</h3>
   <p>
     The paper aims to predict American Airlines' flight arrival delays using two
     primary time series forecasting models: ARIMA (AutoRegressive Integrated
@@ -15,7 +15,7 @@
     satisfaction, and reducing economic losses.
   </p>
   <br />
-  <h2>Used Tools</h2>
+  <h3>Used Tools</h3>
   <ul>
     <li>
       R Programming Language: Used for the entire data analysis and forecasting
