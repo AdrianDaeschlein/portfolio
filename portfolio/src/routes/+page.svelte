@@ -9,6 +9,8 @@
   // import ML_Final_Project from '../components/ML_Final_Project.svelte';
   import PredictiveAnalyticsCode from '../components/PredictiveAnalyticsCode.svelte';
   import SkincancerDetectionCode from '../components/SkincancerDetectionCode.svelte';
+  import Isek from '../components/Isek.svelte';
+  import IsekMore from '../components/IsekMore.svelte';
   let activeSubheading: number = 0;
   let mounted = false;
   let animationTriggered = false;
@@ -94,6 +96,15 @@
       >
         PREDICTIVE ANALYTICS OF AIRLINE DELAYS
       </div>
+      <div
+        class="subheadings"
+        role="button"
+        tabindex="0"
+        on:click={() => changeContent(5)}
+        on:keydown={(e) => e.key === 'Enter' && changeContent(4)}
+      >
+        ISEK - AI CALENDAR
+      </div>
     </div>
     <br />
     <br />
@@ -123,6 +134,9 @@
       {#if activeSubheading === 4}
         <PredictiveAnalytics />
       {/if}
+      {#if activeSubheading === 5}
+        <Isek />
+      {/if}
     </div>
   </div>
 
@@ -144,6 +158,9 @@
     {/if}
     {#if activeSubheading === 4}
       <PredictiveAnalyticsCode />
+    {/if}
+    {#if activeSubheading === 5}
+      <IsekMore />
     {/if}
   </div>
 </div>
@@ -258,5 +275,9 @@
     cursor: pointer;
     font-size: 18px;
     margin: 10px 0;
+  }
+
+  .subheadings:hover {
+    text-decoration: underline;
   }
 </style>
