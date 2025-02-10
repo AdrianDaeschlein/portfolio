@@ -4,11 +4,13 @@
 
   import SkincancerDetection from '../components/SkincancerDetection.svelte';
   import TableauVisualization from '../components/TableauVisualization.svelte';
+  import TableauVisualizationMore from '../components/TableauVisualizationMore.svelte';
   import ReinforcementLearning from '../components/ReinforcementLearning.svelte';
   import PredictiveAnalytics from '../components/PredictiveAnalytics.svelte';
-  // import ML_Final_Project from '../components/ML_Final_Project.svelte';
   import PredictiveAnalyticsCode from '../components/PredictiveAnalyticsCode.svelte';
   import SkincancerDetectionCode from '../components/SkincancerDetectionCode.svelte';
+  import FaceSwap from '../components/FaceSwap.svelte';
+  import FaceSwapCode from '../components/FaceSwapCode.svelte';
   import Isek from '../components/Isek.svelte';
   import IsekMore from '../components/IsekMore.svelte';
   let activeSubheading: number = 0;
@@ -85,7 +87,7 @@
         on:click={() => changeContent(3)}
         on:keydown={(e) => e.key === 'Enter' && changeContent(3)}
       >
-        RL MODEL FOR SAME-DAY DELIVERY
+        Bachelor: RL MODEL FOR SAME-DAY DELIVERY
       </div>
       <div
         class="subheadings"
@@ -104,6 +106,15 @@
         on:keydown={(e) => e.key === 'Enter' && changeContent(4)}
       >
         ISEK - AI CALENDAR
+      </div>
+      <div
+        class="subheadings"
+        role="button"
+        tabindex="0"
+        on:click={() => changeContent(6)}
+        on:keydown={(e) => e.key === 'Enter' && changeContent(6)}
+      >
+        ML for Face Swaps
       </div>
     </div>
     <br />
@@ -137,6 +148,9 @@
       {#if activeSubheading === 5}
         <Isek />
       {/if}
+      {#if activeSubheading === 6}
+        <FaceSwap />
+      {/if}
     </div>
   </div>
 
@@ -151,7 +165,7 @@
       <SkincancerDetectionCode />
     {/if}
     {#if activeSubheading === 2}
-      <h1>TABLEAU VISUALIZATION OF AIRBNB DATA</h1>
+      <TableauVisualizationMore />
     {/if}
     {#if activeSubheading === 3}
       <h1>REINFORCEMENT LEARNING MODEL FOR SAME-DAY DELIVERY</h1>
@@ -161,6 +175,9 @@
     {/if}
     {#if activeSubheading === 5}
       <IsekMore />
+    {/if}
+    {#if activeSubheading === 6}
+      <FaceSwapCode />
     {/if}
   </div>
 </div>
