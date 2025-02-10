@@ -13,6 +13,8 @@
   import FaceSwapCode from '../components/FaceSwapCode.svelte';
   import Isek from '../components/Isek.svelte';
   import IsekMore from '../components/IsekMore.svelte';
+  import FallDetection from '../components/FallDetection.svelte';
+  import FallDetectionCode from '../components/FallDetectionCode.svelte';
   let activeSubheading: number = 0;
   let mounted = false;
   let animationTriggered = false;
@@ -60,6 +62,9 @@
     class="left"
     style="display: flex; flex-direction: column; justify-content: flex-start;"
   >
+
+    <!-- Profile Picture -->
+    <img src="/port_pic.png" alt="Profile Picture" class="profile-pic" />
     <h1 style="margin-block-start: 1em;">PROJECTS</h1>
     <div>
       <div
@@ -116,6 +121,15 @@
       >
         ML for Face Swaps
       </div>
+      <div
+        class="subheadings"
+        role="button"
+        tabindex="0"
+        on:click={() => changeContent(7)}
+        on:keydown={(e) => e.key === 'Enter' && changeContent(7)}
+      >
+        Master: Fall Detection
+      </div>
     </div>
     <br />
     <br />
@@ -151,6 +165,9 @@
       {#if activeSubheading === 6}
         <FaceSwap />
       {/if}
+      {#if activeSubheading === 7}
+        <FallDetection />
+      {/if}
     </div>
   </div>
 
@@ -178,6 +195,9 @@
     {/if}
     {#if activeSubheading === 6}
       <FaceSwapCode />
+    {/if}
+    {#if activeSubheading === 7}
+      <FallDetectionCode />
     {/if}
   </div>
 </div>
@@ -296,5 +316,14 @@
 
   .subheadings:hover {
     text-decoration: underline;
+  }
+
+  .profile-pic {
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1em auto;
   }
 </style>
